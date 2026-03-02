@@ -1,11 +1,12 @@
 import { MongoClient } from "mongodb";
 
-const url = 'mongodb://0.0.0.0:27017';
-const dbName = "webphuket"
+const uri = process.env.MONGO_URI;   // ดึงจาก Render
 
-const client = new MongoClient(url);
+const client = new MongoClient(uri);
 
 await client.connect();
-const mongo = client.db(dbName);
+console.log("MongoDB connected");
+
+const mongo = client.db("webphuket");
 
 export default mongo;
